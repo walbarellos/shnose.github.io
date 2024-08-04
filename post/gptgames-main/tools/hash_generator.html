@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hash Generator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="hash generator,md5,sha1,sha256,sha224,sha512,sha384,sha3,ripemd160">
+  <meta name="description" content="Generate hashes for text strings with different algorithms (MD5, SHA1, SHA256, SHA224, SHA512, SHA384, SHA3, RIPEMD160).">
+  <style>
+      * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+      }
+
+      body {
+          font-family: sans-serif;
+      }
+
+      h1 {
+          text-align: center;
+          margin-top: 20px;
+      }
+
+      .container {
+          width: 80%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 20px;
+      }
+
+      .input-container,
+      .output-container,
+      .buttons-container {
+          margin-top: 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+      }
+
+      .buttons-container {
+          flex-direction: row;
+      }
+
+      .buttons-container button {
+          white-space: nowrap;
+          margin: 0 5px;
+      }
+
+      label {
+          margin-bottom: 5px;
+      }
+
+      input[type="text"] {
+          width: 100%;
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+      }
+
+      input[type="text"]:focus {
+          outline: none;
+          border: 1px solid #666;
+      }
+
+      button {
+          padding: 10px 20px;
+          margin-top: 10px;
+          border: none;
+          border-radius: 5px;
+          font-size: 16px;
+          cursor: pointer;
+          background-color: #007bff;
+          color: #fff;
+      }
+
+      button:hover {
+          background-color: #0069d9;
+      }
+
+      @media screen and (max-width: 600px) {
+          .input-container input[type="text"],
+          .output-container input[type="text"] {
+              width: 80%;
+          }
+
+          .container {
+              width: 100%;
+          }
+      }
+  </style>
+</head>
+<body>
+<h1>Hash Generator</h1>
+<div class="container">
+  <div class="input-container">
+    <label for="text">Enter text to hash:</label>
+    <input type="text" id="text" placeholder="Enter text here" size="40">
+  </div>
+  <div class="output-container">
+    <label for="hash">Hashed text:</label>
+    <input type="text" id="hash" placeholder="Hashed text will appear here" readonly size="40">
+  </div>
+  <div class="buttons-container">
+    <button id="md5-btn">MD5</button>
+    <button id="sha1-btn">SHA-1</button>
+    <button id="sha256-btn">SHA-256</button>
+        <button id="sha224-btn">SHA-224</button>
+    <button id="sha512-btn">SHA-512</button>
+        <button id="sha384-btn">SHA-384</button>
+        <button id="sha3-btn">SHA-3</button>
+        <button id="ripemd160-btn">RIPEMD-160</button>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+        integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+  function md5Hash(text) {
+    return CryptoJS.MD5(text).toString();
+  }
+
+  function sha1Hash(text) {
+    return CryptoJS.SHA1(text).toString();
+  }
+
+  function sha256Hash(text) {
+    return CryptoJS.SHA256(text).toString();
+  }
+
+  function sha224Hash(text) {
+    return CryptoJS.SHA224(text).toString();
+  }
+
+  function sha512Hash(text) {
+    return CryptoJS.SHA512(text).toString();
+  }
+
+  function sha384Hash(text) {
+    return CryptoJS.SHA384(text).toString();
+  }
+
+  function sha3Hash(text) {
+    return CryptoJS.SHA3(text).toString();
+  }
+
+  function ripemd160Hash(text) {
+    return CryptoJS.RIPEMD160(text).toString();
+  }
+
+  function generateHash() {
+    const text = document.getElementById("text").value;
+
+    if (text) {
+      let hash;
+
+      switch (this.id) {
+        case "md5-btn":
+          hash = md5Hash(text);
+          break;
+        case "sha1-btn":
+          hash = sha1Hash(text);
+          break;
+        case "sha256-btn":
+          hash = sha256Hash(text);
+          break;
+        case "sha224-btn":
+          hash = sha224Hash(text);
+          break;
+        case "sha512-btn":
+          hash = sha512Hash(text);
+          break;
+        case "sha384-btn":
+          hash = sha384Hash(text);
+          break;
+        case "sha3-btn":
+          hash = sha3Hash(text);
+          break;
+        case "ripemd160-btn":
+          hash = ripemd160Hash(text);
+          break;
+      }
+
+      document.getElementById("hash").value = hash;
+    }
+  }
+
+  document.getElementById("md5-btn").addEventListener("click", generateHash);
+  document.getElementById("sha1-btn").addEventListener("click", generateHash);
+  document.getElementById("sha256-btn").addEventListener("click", generateHash);
+  document.getElementById("sha224-btn").addEventListener("click", generateHash);
+  document.getElementById("sha512-btn").addEventListener("click", generateHash);
+  document.getElementById("sha384-btn").addEventListener("click", generateHash);
+  document.getElementById("sha3-btn").addEventListener("click", generateHash);
+  document.getElementById("ripemd160-btn").addEventListener("click", generateHash);
+</script>
+<script type="text/javascript" src="../sidebar.js"></script>
+</body>
+</html>

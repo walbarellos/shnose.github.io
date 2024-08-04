@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rock Paper Scissors Online</title>
+  <meta name="keywords" content="rock paper scissors, online game, computer opponent, web game, hand game" />
+  <meta name="description" content="Play Rock Paper Scissors online against a computer. Choose your move and see if you can beat the computer. It's easy and fun!" />
+  <meta charset="utf-8">
+  <style>
+    #game {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+    .choice {
+      width: 50px;
+      height: 50px;
+      border-radius: 25px;
+      background-color: #3f3f3f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="game">
+    <div class="choice" id="rock">✊</div>
+    <div class="choice" id="paper">✋</div>
+    <div class="choice" id="scissors">✌️</div>
+  </div>
+  <div id="result"></div>
+  <script>
+    const choices = document.querySelectorAll(".choice");
+    const result = document.getElementById("result");
+    choices.forEach(choice => choice.addEventListener("click", play));
+    
+    function play(e) {
+      const playerChoice = e.target.id;
+      const computerChoice = getComputerChoice();
+      const winner = getWinner(playerChoice, computerChoice);
+      displayResult(winner, computerChoice);
+    }
+    
+    function getComputerChoice() {
+      const options = ["rock", "paper", "scissors"];
+      return options[Math.floor(Math.random() * 3)];
+    }
+    
+    function getWinner(playerChoice, computerChoice) {
+      if (playerChoice === computerChoice) return "tie";
+      if (playerChoice === "rock")
+        return computerChoice === "scissors" ? "player" : "computer";
+      if (playerChoice === "paper")
+        return computerChoice === "rock" ? "player" : "computer";
+      if (playerChoice === "scissors")
+        return computerChoice === "paper" ? "player" : "computer";
+    }
+    
+    function displayResult(winner, computerChoice) {
+      if (winner === "player") {
+        result.innerHTML = `You win! 🎉 The computer chose ${computerChoice}.`;
+      } else if (winner === "computer") {
+        result.innerHTML = `You lose... 💔 The computer chose ${computerChoice}.`;
+      } else {
+        result.innerHTML = `It's a tie! 🤝 Both players chose ${computerChoice}.`;
+      }
+    }
+  </script>
+<script src="../sidebar.js"></script>
+</body>
+</html>

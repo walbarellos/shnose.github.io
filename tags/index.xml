@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on wepiphany</title>
-    <link>https://wepiphany.netlify.app/tags/</link>
-    <description>Recent content in Tags on wepiphany</description>
+    <title>Tags on shnose</title>
+    <link>https://shnose.netlify.app/tags/</link>
+    <description>Recent content in Tags on shnose</description>
     <generator>Made with 💜 by walbarello</generator>
-    <managingEditor>willianalbarello@gmail.com (wepiphany)</managingEditor>
-    <webMaster>willianalbarello@gmail.com (wepiphany)</webMaster>
+    <managingEditor>willianalbarello@gmail.com (shnose)</managingEditor>
+    <webMaster>willianalbarello@gmail.com (shnose)</webMaster>
     
-	<atom:link href="https://wepiphany.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://shnose.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
